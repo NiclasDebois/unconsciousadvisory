@@ -34,7 +34,8 @@ a:hover { opacity: 0.85; }
 
 /* Sticky Header with Prototypical Layout */
 nav {
-  position: sticky; top: 0; z-index: 100;
+  position: relative;
+  z-index: 100;
   background: #FFFFFF;
   border-bottom: 1px solid var(--border);
 }
@@ -109,7 +110,12 @@ nav .wrap {
   opacity: 1;
 }
 
-/* Mobile Hamburger Button */
+/* Mobile Dropdown - CRITICAL FIX: Hide by default on desktop */
+.mobile-dropdown {
+  display: none;
+}
+
+/* Hamburger Menu Toggle */
 .menu-toggle {
   display: none;
   flex-direction: column;
@@ -135,12 +141,13 @@ nav .wrap {
 .menu-toggle.active span:nth-child(2) { opacity: 0; }
 .menu-toggle.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-/* Solid Mobile Dropdown Card Directly Below Header */
+/* Mobile View Styling (under 960px) */
 @media (max-width: 960px) {
   .nav-right-desktop { display: none; }
   .menu-toggle { display: flex; }
 
   .mobile-dropdown {
+    display: block;
     position: absolute;
     top: 72px;
     left: 0;
