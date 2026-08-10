@@ -14,14 +14,6 @@
   <body>
     <nav>
       <div class="wrap">
-        <div class="nav-left">
-          <ul>
-            <li><a href="#opportunity">Opportunity</a></li>
-            <li><a href="#value">Value</a></li>
-            <li><a href="#models">Engagement</a></li>
-            <li><a href="#advantage">Advantage</a></li>
-          </ul>
-        </div>
         <a href="#" class="logo-lockup">
           <svg class="logo-mark" viewBox="0 0 100 125" xmlns="http://www.w3.org/2000/svg">
             <defs>
@@ -41,14 +33,24 @@
             <span class="l2">Behavioral Strategy &amp; Creative Optimization</span>
           </div>
         </a>
-        <div class="nav-right">
-          <button class="menu-toggle" aria-label="Toggle navigation">
-            <span></span>
-            <span></span>
-            <span></span>
-          </button>
+
+        <div class="nav-right-desktop">
+          <ul>
+            <li><a href="#opportunity">Opportunity</a></li>
+            <li><a href="#value">Value</a></li>
+            <li><a href="#models">Engagement</a></li>
+            <li><a href="#advantage">Advantage</a></li>
+          </ul>
+          <a class="desktop-cta-btn" href="#contact">Book an Introduction</a>
         </div>
+
+        <button class="menu-toggle" aria-label="Toggle navigation">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
       </div>
+
       <div class="mobile-dropdown" id="mobile-menu">
         <ul>
           <li><a href="#opportunity" class="mobile-link">Opportunity</a></li>
@@ -200,6 +202,7 @@
         <span class="footer-copy">&copy; <span id="year"></span> Behavioral Strategy &amp; Creative Optimization</span>
       </div>
     </footer>
+
     <script>
       document.getElementById('year').textContent = new Date().getFullYear();
       

@@ -29,10 +29,10 @@ body {
 body.menu-open { overflow: hidden; }
 h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; color: var(--dark); }
 a { color: var(--accent-3); text-decoration: none; transition: opacity 0.2s; }
-a:hover { opacity: 0.8; }
+a:hover { opacity: 0.85; }
 .wrap { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 
-/* Sticky Navigation Header */
+/* Sticky Header with Prototypical Layout */
 nav {
   position: sticky; top: 0; z-index: 100;
   background: #FFFFFF;
@@ -44,54 +44,72 @@ nav::after {
   opacity: 0.5;
 }
 
-/* Header Grid: Centered Logo Layout */
 nav .wrap {
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
+  display: flex;
   align-items: center;
+  justify-content: space-between;
   height: 72px;
 }
 
-.nav-left {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-}
-
+/* Prototypical Top-Left Logo */
 .logo-lockup {
   display: flex;
   align-items: center;
-  gap: 10px;
-  text-align: center;
-  justify-content: center;
+  gap: 12px;
   text-decoration: none;
 }
-.logo-mark { height: 38px; width: auto; flex-shrink: 0; }
-.logo-text { display: flex; flex-direction: column; line-height: 1.1; text-align: left; }
-.logo-text .l1 { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 15px; text-transform: uppercase; color: var(--dark); letter-spacing: 0.02em; }
-.logo-text .l2 { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 8px; text-transform: uppercase; color: var(--grad-5); letter-spacing: 0.05em; margin-top: 2px; }
+.logo-mark { height: 40px; width: auto; flex-shrink: 0; }
+.logo-text { display: flex; flex-direction: column; line-height: 1.15; }
+.logo-text .l1 { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 16px; text-transform: uppercase; color: var(--dark); letter-spacing: 0.02em; }
+.logo-text .l2 { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 8.5px; text-transform: uppercase; color: var(--grad-5); letter-spacing: 0.05em; margin-top: 2px; }
 
-.nav-right {
+/* Desktop Right Navigation */
+.nav-right-desktop {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  gap: 28px;
 }
-
-/* Desktop Links */
-nav ul { list-style: none; display: flex; align-items: center; margin: 0; padding: 0; }
-nav ul li { display: flex; align-items: center; }
-nav ul li:not(:last-child)::after {
+.nav-right-desktop ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  margin: 0; padding: 0;
+}
+.nav-right-desktop ul li { display: flex; align-items: center; }
+.nav-right-desktop ul li:not(:last-child)::after {
   content: "";
   width: 1px;
   height: 14px;
   background: var(--border-card);
-  margin: 0 16px;
-  opacity: 0.7;
+  margin: 0 18px;
+  opacity: 0.6;
 }
-nav ul a { font-size: 14px; font-weight: 600; color: var(--neutral); transition: color 0.2s; white-space: nowrap; }
-nav ul a:hover { color: var(--dark); }
+.nav-right-desktop ul a {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--neutral);
+  transition: color 0.2s;
+  white-space: nowrap;
+}
+.nav-right-desktop ul a:hover { color: var(--dark); }
 
-/* Hamburger Menu Toggle */
+.desktop-cta-btn {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: #FFFFFF !important;
+  background: var(--dark);
+  padding: 10px 22px;
+  border-radius: 6px;
+  transition: transform 0.15s, background-color 0.15s;
+}
+.desktop-cta-btn:hover {
+  transform: translateY(-1px);
+  background: #1e293b;
+  opacity: 1;
+}
+
+/* Mobile Hamburger Button */
 .menu-toggle {
   display: none;
   flex-direction: column;
@@ -102,9 +120,8 @@ nav ul a:hover { color: var(--dark); }
   border: none;
   cursor: pointer;
   padding: 8px;
-  width: 40px;
-  height: 40px;
-  margin-left: auto;
+  width: 44px;
+  height: 44px;
 }
 .menu-toggle span {
   display: block;
@@ -118,14 +135,11 @@ nav ul a:hover { color: var(--dark); }
 .menu-toggle.active span:nth-child(2) { opacity: 0; }
 .menu-toggle.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-/* Mobile Dropdown Styling - Solid, Opaque, Positioned Directly Below Header */
+/* Solid Mobile Dropdown Card Directly Below Header */
 @media (max-width: 960px) {
-  nav .wrap {
-    grid-template-columns: 40px 1fr 40px;
-  }
-  .nav-left { display: none; }
+  .nav-right-desktop { display: none; }
   .menu-toggle { display: flex; }
-  
+
   .mobile-dropdown {
     position: absolute;
     top: 72px;
@@ -133,12 +147,12 @@ nav ul a:hover { color: var(--dark); }
     right: 0;
     background: #FFFFFF !important;
     border-bottom: 1px solid var(--border);
-    box-shadow: 0 16px 32px rgba(15, 23, 42, 0.12);
-    padding: 16px 24px 28px;
+    box-shadow: 0 16px 36px rgba(15, 23, 42, 0.12);
+    padding: 12px 24px 24px;
     transform: translateY(-150%);
     opacity: 0;
     visibility: hidden;
-    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease, visibility 0.35s;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease, visibility 0.3s;
     z-index: 99;
   }
   .mobile-dropdown.active {
@@ -147,19 +161,16 @@ nav ul a:hover { color: var(--dark); }
     visibility: visible;
   }
   .mobile-dropdown ul {
+    list-style: none;
+    display: flex;
     flex-direction: column;
-    align-items: stretch;
-    width: 100%;
-    gap: 0;
+    padding: 0; margin: 0;
   }
-  .mobile-dropdown ul li {
-    width: 100%;
-  }
-  .mobile-dropdown ul li:not(:last-child)::after { display: none; }
   .mobile-dropdown ul a {
-    display: block;
+    display: flex;
+    align-items: center;
     width: 100%;
-    padding: 14px 8px;
+    min-height: 48px;
     font-size: 16px;
     font-weight: 600;
     color: var(--dark);
@@ -167,20 +178,19 @@ nav ul a:hover { color: var(--dark); }
   }
   .mobile-dropdown .mobile-cta-wrapper {
     margin-top: 16px;
-    padding-top: 8px;
   }
   .mobile-dropdown .mobile-cta-btn {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 100%;
-    text-align: center;
+    min-height: 48px;
     font-family: 'Inter', sans-serif;
     font-size: 15px;
     font-weight: 700;
     color: #FFFFFF !important;
     background: var(--dark);
-    padding: 12px 20px;
     border-radius: 8px;
-    border-bottom: none !important;
   }
 }
 
