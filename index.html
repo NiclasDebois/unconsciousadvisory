@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Unconscious Advisory — Behavioral Strategy & Creative Optimization</title>
     <meta name="description" content="Unconscious Advisory turns cognitive science into sharper creative decisions, stronger consumer attention, and commercially effective campaigns.">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg viewBox='0 0 400 500' xmlns='http://www.w3.org/2000/svg'><defs><linearGradient id='fg' x1='0%' y1='25%' x2='100%' y2='10%'><stop offset='0%' stop-color='%23EF5324'/><stop offset='18%' stop-color='%23F6921E'/><stop offset='38%' stop-color='%23E5B820'/><stop offset='58%' stop-color='%2352B769'/><stop offset='78%' stop-color='%232894D7'/><stop offset='100%' stop-color='%231B60C8'/></linearGradient></defs><path d='M 50 100 H 130 V 280 C 130 350, 170 380, 200 380 C 230 380, 270 350, 270 280 V 150 C 270 120, 295 105, 330 105 V 80 C 295 80, 270 95, 270 140 V 280 C 270 360, 230 410, 200 410 C 170 410, 130 360, 130 280 V 100 H 50 Z' fill='url(%23fg)'/></svg>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
@@ -25,20 +26,27 @@
                 <stop offset="100%" stop-color="#1B60C8"/>
               </linearGradient>
             </defs>
-            <path d="M 52 105 L 132 105 L 132 260 C 132 350, 268 350, 268 240 C 268 195, 252 172, 232 160 C 250 120, 285 105, 335 105 Q 348 105, 348 118 L 348 260 C 348 410, 52 410, 52 260 Z" fill="url(#uLogoGradient)"/>
+            <path d="M 50 100 H 130 V 280 C 130 350, 170 380, 200 380 C 230 380, 270 350, 270 280 V 150 C 270 120, 295 105, 330 105 V 80 C 295 80, 270 95, 270 140 V 280 C 270 360, 230 410, 200 410 C 170 410, 130 360, 130 280 V 100 H 50 Z" fill="url(#uLogoGradient)"/>
           </svg>
           <div class="logo-text">
             <span class="l1">Unconscious Advisory</span>
             <span class="l2">Behavioral Strategy &amp; Creative Optimization</span>
           </div>
         </div>
-        <ul>
-          <li><a href="#opportunity">Opportunity</a></li>
-          <li><a href="#value">Value</a></li>
-          <li><a href="#models">Engagement</a></li>
-          <li><a href="#advantage">Advantage</a></li>
+        <button class="menu-toggle" aria-label="Toggle navigation">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <ul id="nav-links">
+          <li><a href="#opportunity" class="nav-link">Opportunity</a></li>
+          <li><a href="#value" class="nav-link">Value</a></li>
+          <li><a href="#models" class="nav-link">Engagement</a></li>
+          <li><a href="#advantage" class="nav-link">Advantage</a></li>
+          <li class="mobile-cta-li" style="display:none;">
+            <a class="nav-cta mobile-only" href="#contact">Book an Introduction</a>
+          </li>
         </ul>
-        <a class="nav-cta" href="#contact">Book an Introduction</a>
       </div>
     </nav>
 
@@ -173,13 +181,34 @@
                 <stop offset="100%" stop-color="#1B60C8"/>
               </linearGradient>
             </defs>
-            <path d="M 52 105 L 132 105 L 132 260 C 132 350, 268 350, 268 240 C 268 195, 252 172, 232 160 C 250 120, 285 105, 335 105 Q 348 105, 348 118 L 348 260 C 348 410, 52 410, 52 260 Z" fill="url(#uLogoGradientFt)"/>
+            <path d="M 50 100 H 130 V 280 C 130 350, 170 380, 200 380 C 230 380, 270 350, 270 280 V 150 C 270 120, 295 105, 330 105 V 80 C 295 80, 270 95, 270 140 V 280 C 270 360, 230 410, 200 410 C 170 410, 130 360, 130 280 V 100 H 50 Z" fill="url(#uLogoGradientFt)"/>
           </svg>
           <span class="ft">Unconscious Advisory</span>
         </div>
         <span class="footer-copy">&copy; <span id="year"></span> Behavioral Strategy &amp; Creative Optimization</span>
       </div>
     </footer>
-    <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+    <script>
+      document.getElementById('year').textContent = new Date().getFullYear();
+      
+      // Mobile Menu Toggle
+      const toggle = document.querySelector('.menu-toggle');
+      const navLinks = document.getElementById('nav-links');
+      const links = document.querySelectorAll('.nav-link');
+      
+      toggle.addEventListener('click', () => {
+        toggle.classList.toggle('active');
+        navLinks.classList.toggle('active');
+        document.body.classList.toggle('menu-open');
+      });
+      
+      links.forEach(link => {
+        link.addEventListener('click', () => {
+          toggle.classList.remove('active');
+          navLinks.classList.remove('active');
+          document.body.classList.remove('menu-open');
+        });
+      });
+    </script>
   </body>
 </html>
